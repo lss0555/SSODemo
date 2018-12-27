@@ -1,0 +1,12 @@
+#客户端地址配置
+                    test1.baseUrl: //www.sys1.com:8081
+                    test1.homeUri: /index.jsp/home
+                    test1.innerAddress: http://127.0.0.1:8081/innerAddress
+                    test2.baseUrl: //www.sys1.com:8082
+                    test2.homeUri: /index.jsp/home
+                    test2.innerAddress: http://127.0.0.1:8082/innerAddress
+
+                    #token内容配置
+                    tokenTimeout: 20
+                    secureMode: false
+                    autoLoginExpDays: 30

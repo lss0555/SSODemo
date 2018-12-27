@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <title>用户登录</title>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="${sys.baseUrl}/cookie_set?vt=${vt}"></script>-->
+</head>
+<body>
+<div >
+</div>
+<div >
+    <h1 >登录成功</h1>
+    <h3>   用户名: <span th:text="${user.username}"/></h3>
+    <h3>   密  码: <span th:text="${user.password}"/></h3>
+    <button onclick="loginout()">退出登录</button>
+</div>
+<script>
+    function loginout() {
+        location.href = "http://localhost:8002/loginOut";
+    }
+</script>
+</body>
+</html>
