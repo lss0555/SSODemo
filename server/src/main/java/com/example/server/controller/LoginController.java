@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.common.constance.Constans;
 import com.example.common.utils.CookieUtil;
 import com.example.common.utils.StringUtils;
@@ -9,10 +10,7 @@ import com.example.server.redis.inter.TokenManagerInter;
 import com.example.server.service.inter.UserLoginServiceInter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -85,4 +83,23 @@ public class LoginController {
         return view;
     }
 
+    @GetMapping("/getCk")
+    @ResponseBody
+    public String getCk(){
+        return "hello world";
+    }
+
+    @CrossOrigin
+    @GetMapping("/getCk1")
+    @ResponseBody
+    public String getCk1(){
+        return "hello world1";
+    }
+
+    @GetMapping("/getCk2")
+    @ResponseBody
+    public String getCk2(String callback){
+        String result=callback+"("+ JSON.toJSONString("hello world2")+")";
+        return result;
+    }
 }

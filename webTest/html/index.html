@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户主页</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body >
+   <div>我是主页</div>
+   <div id="ck">我的cookie:</div>
+   <button onclick="getCookie('cookie_sso')">获取cookie值</button>
+   <button onclick="setCookie('cookie_sso','123456','1')">设置cookie值</button>
+   <button onclick="delCookie('cookie_sso')">移除cookie</button>
+   <br/><br/><br/>
+   <button onclick="login()">授权登录</button>
+</body>
+<script>
+
+    function login() {
+        location.href="http://localhost:8002/login";
+    }
+    
+    function getCk() {
+        var ck=getCookie('cookie_sso');
+        $("#ck").text(ck);
+    }
+
+    function setCookie(c_name, value, expiredays) {
+        var exdate = new Date();
+        exdate.setTime(Number(exdate) + expiredays);
+        document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+    }
+
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null)
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+
+    function getCookie(key) {
+        var arr1 = document.cookie.split("; ");//由于cookie是通过一个分号+空格的形式串联起来的，所以这里需要先按分号空格截断,变成[name=Jack,pwd=123456,age=22]数组类型；
+        for (var i = 0; i < arr1.length; i++) {
+            var arr2 = arr1[i].split("=");//通过=截断，把name=Jack截断成[name,Jack]数组；
+            if (arr2[0] == key) {
+                $("#ck").text(decodeURI(arr2[1]));
+                return decodeURI(arr2[1]);
+            }else {
+                $("#ck").text("获取cookie值");
+            }
+        }
+    }
+</script>
+</html>

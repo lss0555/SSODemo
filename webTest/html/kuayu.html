@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域请求测试</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+</head>
+<body >
+   <button onclick="getCk()">获取Cookie</button>
+   <button onclick="getCk1()">获取Cookie1</button>
+   <button onclick="getCk2()">获取Cookie2</button>
+</body>
+<script>
+   function getCk() {
+       $.ajax({
+           url: "http://localhost:8002"+"/getCk",
+           type: 'GET',
+           success: function (data) {
+               layer.msg("结果:"+data);
+           }
+       });
+   }
+
+   function getCk1() {
+       $.ajax({
+           url: "http://localhost:8002"+"/getCk1",
+           type: 'GET',
+           success: function (data) {
+               layer.msg("结果:"+data);
+           }
+       });
+   }
+
+   function getCk2() {
+       $.ajax({
+           url: "http://localhost:8002"+"/getCk2",
+           type: 'GET',
+           dataType: 'jsonp',
+           success: function (date) {
+               layer.msg("结果:"+date);
+           }
+       });
+   }
+</script>
+</html>
